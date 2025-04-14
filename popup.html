@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Screenshot Share</title>
+  <style>
+    body {
+      width: 320px;
+      padding: 15px;
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      font-size: 18px;
+      margin-top: 0;
+      color: #333;
+    }
+    .image-container {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 10px;
+      margin-bottom: 15px;
+      display: none;
+    }
+    .preview {
+      max-width: 100%;
+      margin-bottom: 10px;
+    }
+    .buttons {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    button {
+      background: #4285f4;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    button:hover {
+      background: #3367d6;
+    }
+    button:disabled {
+      background: #cccccc;
+      cursor: default;
+    }
+    .empty-state {
+      color: #666;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .timestamp {
+      font-size: 12px;
+      color: #666;
+      margin-top: 5px;
+    }
+    .server-url-container {
+      margin-top: 12px;
+      padding: 8px;
+      background-color: #f5f5f5;
+      border-radius: 4px;
+      display: none;
+    }
+    .server-url {
+      font-size: 12px;
+      word-break: break-all;
+      color: #4285f4;
+      text-decoration: none;
+    }
+    .server-url:hover {
+      text-decoration: underline;
+    }
+    .server-url-label {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 4px;
+    }
+    .status-message {
+      margin-top: 10px;
+      padding: 8px;
+      border-radius: 4px;
+      font-size: 13px;
+      text-align: center;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Screenshot Share</h1>
+  
+  <div id="no-screenshot" class="empty-state">
+    <p>No recent screenshots.</p>
+    <p>Right-click anywhere on a webpage and select "Share screenshot" to take a screenshot.</p>
+  </div>
+  
+  <div id="screenshot-container" class="image-container">
+    <img id="screenshot-preview" class="preview" src="" alt="Screenshot preview">
+    
+    <div id="server-url-container" class="server-url-container">
+      <div class="server-url-label">Shareable link:</div>
+      <a id="server-url" class="server-url" href="" target="_blank"></a>
+    </div>
+    
+    <div class="buttons">
+      <button id="copy-btn">Copy to Clipboard</button>
+      <button id="save-btn">Save to Device</button>
+      <button id="upload-btn">Upload to Server</button>
+    </div>
+    
+    <div id="timestamp" class="timestamp"></div>
+  </div>
+  
+  <div id="status-message" class="status-message"></div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
